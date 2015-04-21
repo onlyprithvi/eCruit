@@ -1,0 +1,13 @@
+*/.settings/**
+*/target/**
+*/.classpath
+*/.project
+/target/
+*/WebContent/**
+*/.springBeans
+*/bin/*
+ecruit-web/src/main/resources/application.properties
+.settings
+.classpath
+.project
+bin/*
