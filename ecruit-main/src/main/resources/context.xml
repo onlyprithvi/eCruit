@@ -11,14 +11,15 @@
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties" ref="hibernateProperties" />
-		<property name="packagesToScan" value="prj.convertTotxt.core"></property>
+		<property name="packagesToScan" value="edu.mum.cs544.project.ecruiter"></property>
+		
 	</bean>
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost/crawl" />
 		<property name="username" value="root" />
-		<property name="password" value="p@ss" />
+		<property name="password" value="" />
 	</bean><!-- hibernate Properties -->
 	<bean id="hibernateProperties"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -30,7 +31,9 @@
 				<prop key="connection.pool_size">1</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
+			
 		</property>
+	
 	</bean>
 	<tx:annotation-driven transaction-manager="txManager" />
 	<bean id="txManager"
@@ -38,8 +41,15 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="service" class="prj.convertTotxt.core.PersistorService">
+	<bean id="service" class="edu.mum.cs544.project.ecruiter.service.ProfileService">
+		
+		<property name="profileDao" ref="profileDao"></property>
+	</bean>
+	<bean id="profileDao" class="edu.mum.cs544.project.ecruiter.dao.ProfileDao">
 		<property name="sf" ref="sessionFactory"></property>
+	</bean>
+	<bean id="crawl" class="edu.mum.cs544.project.ecruit.convertTotxt.core.Crawl">
+		<property name="service" ref="service"></property>
 	</bean>
 
 </beans>
