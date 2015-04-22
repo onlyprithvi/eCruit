@@ -54,11 +54,7 @@ public class QueryFilterService {
 	}
 	
 	public QueryFilter getQueryFilter(int recId,int queryId){
-		String queryString = "SELECT f FROM Recruiter r JOIN r.filters f WHERE r.id = :rId AND f.id = :fId";
-		Query q=sf.getCurrentSession().createQuery(queryString);
-		q.setParameter("rId", recId);
-		q.setParameter("fId", queryId);
-		return (QueryFilter) q.uniqueResult();
+		return queryFilterDao.getQueryFilter(queryId);
 		
 	}
 	
@@ -85,6 +81,11 @@ public class QueryFilterService {
 		
 
 	}
+	
+	public void addFilter(int id, QueryFilter qf){
+		queryFilterDao.addFilter(id, qf);
+	}
+	
 	public void addFilter(int recruiterId, String industry,
 			List<String> educations, List<String> skills, int minimumExperience,String name) {
 		queryFilterDao.addFilter(recruiterId, industry, educations, skills,
@@ -108,6 +109,10 @@ public class QueryFilterService {
 	}
 	public void setMinimumExperienceFilter(int recruiterId, int queryFilterId,int i){
 		queryFilterDao.setMinimumExperience(recruiterId,queryFilterId,i);
+	}
+	
+	public List<QueryFilter> getAllQueryFilters(int id){
+		return queryFilterDao.getAllFilters(id);
 	}
 
 }

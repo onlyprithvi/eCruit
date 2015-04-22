@@ -63,9 +63,7 @@
 		<property name="queryFilterService" ref="queryFilterService"></property>
 	</bean>
 
-	<bean id="recruiter"
-		class="edu.mum.cs544.project.ecruiter.domain.Recruiter">
-	</bean>
+	
 	<bean id="queryFilter"
 		class="edu.mum.cs544.project.ecruiter.domain.QueryFilter">
 	</bean>
