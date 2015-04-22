@@ -110,7 +110,6 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.10</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -120,6 +119,12 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.mum.cs544.project</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+			<artifactId>ecruit-domain</artifactId>
+
 		</dependency>
 	</dependencies>
 
