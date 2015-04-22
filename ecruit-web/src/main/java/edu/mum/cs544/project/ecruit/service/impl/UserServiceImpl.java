@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
 	public User saveUser(User user) {
 		if (user.getId() == null)
-			user.setStatus(UserStatus.Blocked);		
+			user.setStatus(UserStatus.Active);		
 		return userRepository.save(user);
 	}
 
