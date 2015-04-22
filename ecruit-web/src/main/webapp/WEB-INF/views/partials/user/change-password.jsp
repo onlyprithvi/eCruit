@@ -16,7 +16,7 @@
 		<div class="small-8 small-centered columns">
 			<form:form modelAttribute="user" method="post" action="changePassword">
 				<fieldset>
-					<legend>E-PostMan:Change Password</legend>
+					<legend>eCRUIT serVICE :Change Password</legend>
 					
 						<div class="label alert register-error">${message}</div>
 					<div class="row">

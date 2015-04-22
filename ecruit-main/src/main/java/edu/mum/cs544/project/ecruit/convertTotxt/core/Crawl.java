@@ -29,9 +29,9 @@ public class Crawl {
 
 	public static void main(String[] args) throws IOException {
 		context= new ClassPathXmlApplicationContext("context.xml");
-//		profileService= context.getBean("profileService",ProfileService.class);
-//		crawl("http://np.linkedin.com/in/aprithvi");
+
 		recruit();
+		
 	}
 
 	private static void recruit() {
