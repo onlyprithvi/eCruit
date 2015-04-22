@@ -44,7 +44,7 @@ public class UserController {
 		modelAndView.addObject("users", userService.getRegisteredUsers());
 		modelAndView.addObject("partials", "user/user-list");
 		return modelAndView;
-	}	
+	}
 
 	@RequestMapping(value = "/changePassword", method = RequestMethod.GET)
 	public ModelAndView changePassword(@ModelAttribute("user") User newUser) {
@@ -119,12 +119,12 @@ public class UserController {
 		return "redirect:/users";
 	}
 
-	@RequestMapping("/settings")
-	public ModelAndView userProfile() {
-		User user = SecurityUtil.getSessionUser();		
-		modelAndView.addObject("user", userService.find(user.getId()));
-		modelAndView.addObject("partials", "user/user-profile");
-		return modelAndView;
+	@RequestMapping("/settings")	
+	public String userProfile(Model model) {		
+		User user = SecurityUtil.getSessionUser();
+		model.addAttribute("user", userService.find(user.getId()));
+		model.addAttribute("partials", "user/user-profile");
+		return "layouts/main";
 	}
 
 	@RequestMapping("/userProfile")
@@ -132,9 +132,12 @@ public class UserController {
 		modelAndView.addObject("partials", "user/user-profile");
 		return modelAndView;
 	}
-
 	
-
+	@RequestMapping(method= RequestMethod.POST, value="/testBinding")
+	public String test(){
+		return "";
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, value = "/uploadPhoto")
 	public String uploadPersonPhoto(@ModelAttribute("user") User user,
 			HttpServletRequest request, RedirectAttributes model)

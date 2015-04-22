@@ -25,8 +25,7 @@
 		<intercept-url pattern="/error-login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/a/**" access="ROLE_ADMIN" />
 		<intercept-url pattern="/u/**" access="ROLE_ADMIN,ROLE_USER" />
-		<intercept-url pattern="/**" method="POST" access="ROLE_ADMIN" />
-		<intercept-url pattern="/**" method="GET" access="ROLE_USER" />
+		
 		<form-login login-page="/login" authentication-failure-url="/error-login"
 			default-target-url="/dashboard" />
 		<logout logout-success-url="/" />

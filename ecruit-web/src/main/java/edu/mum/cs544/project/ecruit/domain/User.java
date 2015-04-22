@@ -1,10 +1,13 @@
 package edu.mum.cs544.project.ecruit.domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +26,8 @@ import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.multipart.MultipartFile;
+
+import edu.mum.cs544.project.ecruiter.domain.QueryFilter;
 
 @Entity
 @Table(name = "USER")
@@ -77,6 +82,9 @@ public class User implements UserDetails, CredentialsContainer {
 
 	@Column(name = "ROLE", nullable = false)
 	private Role role;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<QueryFilter> filters=new ArrayList<QueryFilter>();
 
 	@Transient
 	private String confirmLoginPassword;
@@ -217,6 +225,15 @@ public class User implements UserDetails, CredentialsContainer {
 
 	public void setProfilePic(MultipartFile profilePic) {
 		this.profilePic = profilePic;
+	}
+	
+	public void setFilters(List<QueryFilter> filter){
+		this.filters=filter;
+	}
+	public void addFilter(QueryFilter filter){
+		if(!filters.contains(filter)){
+			filters.add(filter);
+		}
 	}
 
 

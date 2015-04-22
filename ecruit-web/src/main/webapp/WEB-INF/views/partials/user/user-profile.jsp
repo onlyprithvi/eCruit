@@ -63,13 +63,7 @@ ${message}
 
 
 			</div>
-		</div>
-		<div class="row">
-			<div class="large-4 columns">
-				<label  style="font-weight: bold;"><spring:message code="mailBox.number.label" />${user.mailBox.mNumber }</label>
-
-			</div>
-		</div>
+		</div>		
 		<div class="row">
 			<div class="large-4 columns">
 				<label  style="font-weight: bold;"><spring:message code="user.desc.label" /></label>

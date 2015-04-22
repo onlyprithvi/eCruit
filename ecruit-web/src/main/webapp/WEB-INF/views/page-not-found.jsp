@@ -17,10 +17,10 @@
 <body>
 
 	<center>
-		<%-- <img src="${pageContext.servletContext.contextPath}/resource/images/4o4error.png" alt="Page not found  JSP!!!" > --%>
-		<img
+		<img src="${pageContext.servletContext.contextPath}/resource/images/4o4error.png" alt="Page not found  JSP!!!" >
+		<%-- <img
 			src="<spring:url value="resource/images/4o4error.png"  htmlEscape="true" />"
-			alt="Page not found  JSP!!!" />
+			alt="Page not found  JSP!!!" /> --%>
 	
 	<H2>${requestScope['javax.servlet.error.message']}</H2>
 	<p>

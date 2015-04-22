@@ -23,7 +23,7 @@
 				<a href="<c:url value="/dashboard" />" class="item">					
 					<label><spring:message code="dashboard.label"/></label>
 				</a> 
-				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+				<security:authorize access="hasAnyRole('ROLE_ADMIN')">
 				<a href="<c:url value="/u/users" />" class="item"> 					
 					<label><spring:message code="users.label"/></label>
 				</a> 
