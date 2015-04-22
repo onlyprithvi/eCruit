@@ -85,23 +85,13 @@ public class Profile {
 		this.education = education;
 	}
 
-	// public List<String> getCertificate() {
-	// return certificate;
-	// }
 
-	// public void setCertificate(List<String> certificate) {
-	// this.certificate = certificate;
-	// }
 
 	public void addSkill(String skill) {
 		if (!skills.contains(skill)) {
 			skills.add(skill);
 		}
 	}
-	// public void addCertificate(String cert){
-	// if(!certificate.contains(cert)){
-	// certificate.add(cert);
-	// }
-	// }
+	
 
 }

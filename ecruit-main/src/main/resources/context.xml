@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	 http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/tx 
@@ -41,7 +42,7 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="service" class="edu.mum.cs544.project.ecruiter.service.ProfileService">
+	<bean id="profileService" class="edu.mum.cs544.project.ecruiter.service.ProfileService">
 		
 		<property name="profileDao" ref="profileDao"></property>
 	</bean>
@@ -49,7 +50,21 @@
 		<property name="sf" ref="sessionFactory"></property>
 	</bean>
 	<bean id="crawl" class="edu.mum.cs544.project.ecruit.convertTotxt.core.Crawl">
-		<property name="service" ref="service"></property>
+		<property name="profileService" ref="profileService"></property>
 	</bean>
 
+	<bean id="recruiter"
+		class="edu.mum.cs544.project.ecruiter.domain.Recruiter">
+	</bean>
+	<bean id="queryFilter"
+		class="edu.mum.cs544.project.ecruiter.domain.QueryFilter">
+	</bean>
+	<bean id="recruiterDao"
+		class="edu.mum.cs544.project.ecruiter.dao.RecruiterDao">
+	<property name="sf" ref="sessionFactory"></property>
+	</bean>
+	<bean id="recruiterService"
+		class="edu.mum.cs544.project.ecruiter.service.RecruiterService">
+		<property name="recruiterDao" ref="recruiterDao"></property>
+	</bean>
 </beans>
