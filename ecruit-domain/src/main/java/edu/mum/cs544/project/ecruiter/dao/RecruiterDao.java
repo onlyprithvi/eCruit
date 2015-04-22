@@ -46,55 +46,7 @@ public class RecruiterDao {
 
 	}
 
-	public void addFilter(int recruiterId, String industry,
-			List<String> educations, List<String> skills, int minimumExperience,String name) {
-		Recruiter rec = (Recruiter) sf.getCurrentSession().load(
-				Recruiter.class, recruiterId);
-		QueryFilter qf = new QueryFilter(industry, skills, educations,
-				minimumExperience,name);
-		rec.addFilter(qf);
-		sf.getCurrentSession().update(rec);
-
-	}
-
-	public void addFilter(int recruiterId, int queryFilterId, String filter,
-			int filterType) {
-		// TODO Auto-generated method stub
-		Query query = sf
-				.getCurrentSession()
-				.createQuery(
-						"SELECT DISTINCT filters FROM Recruiter r JOIN r.filters filters WHERE filters.id=:fId AND r.id=:rId");
-		query.setParameter(":fId", queryFilterId);
-		query.setParameter(":rId", recruiterId);
-		QueryFilter qf = (QueryFilter) query.uniqueResult();
-		switch (filterType) {
-		case INDUSTRY:
-			qf.setIndustry(filter);
-			break;
-		case SKILL:
-			qf.addSkill(filter);
-			break;
-		case EDUCATION:
-			qf.addEducation(filter);
-			break;
-		
-		}
-		
-		sf.getCurrentSession().update(qf);
-
-	}
-
 	
-
-	public void setMinimumExperience(int recruiterId, int queryFilterId, int minimumExperience) {
-		// TODO Auto-generated method stub
-		Query query = sf.getCurrentSession().createQuery("SELECT DISTINCT filters FROM Recruiter r JOIN r.filters filters WHERE filters.id=:fId AND r.id=:rId");
-		query.setParameter(":fId", queryFilterId);
-		query.setParameter(":rId", recruiterId);
-		QueryFilter qf=(QueryFilter)query.uniqueResult();
-		qf.setMinimumExperience(minimumExperience);
-		
-	}
 
 	
 

@@ -27,7 +27,16 @@
 				<a href="<c:url value="/u/users" />" class="item"> 					
 					<label><spring:message code="users.label"/></label>
 				</a> 
-				</security:authorize>	
+				</security:authorize>
+				<a href="<c:url value="/j_spring_security_logout" />" class="item"> 
+					<img src="${base}/resource/images/logout.png">
+					<label><spring:message code="logout.label"/></label>
+				</a>
+				
+				<a href="<c:url value="/profiles" />" class="item"> 
+					<label><spring:message code="profile.label"/></label>
+				</a>
+					
 				<a  href="<c:url value="/u/settings" />" class="item">
 					<img src="${base}/resource/images/setting.png">
 					<label><spring:message code="settings.label"/></label>

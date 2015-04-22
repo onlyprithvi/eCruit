@@ -48,29 +48,29 @@ public class RecruiterService {
 
 	}
 
-	public void addFilter(int recruiterId, String industry,
-			List<String> educations, List<String> skills, int minimumExperience,String name) {
-		recruiterDao.addFilter(recruiterId, industry, educations, skills,
-				minimumExperience,name);
-	}
-
-	public void addIndustryFilter(int recruiterId, int queryFilterId,
-			String industry) {
-		recruiterDao.addFilter(recruiterId, queryFilterId, industry,RecruiterDao.INDUSTRY);
-
-	}
-	public void addSkillFilter(int recruiterId, int queryFilterId,
-			String skill) {
-		recruiterDao.addFilter(recruiterId, queryFilterId, skill,RecruiterDao.SKILL);
-		
-	}
-	public void addEducationFilter(int recruiterId, int queryFilterId,
-			String education) {
-		recruiterDao.addFilter(recruiterId, queryFilterId, education,RecruiterDao.EDUCATION);
-		
-	}
-	public void setMinimumExperienceFilter(int recruiterId, int queryFilterId,int i){
-		recruiterDao.setMinimumExperience(recruiterId,queryFilterId,i);
-	}
+//	public void addFilter(int recruiterId, String industry,
+//			List<String> educations, List<String> skills, int minimumExperience,String name) {
+//		recruiterDao.addFilter(recruiterId, industry, educations, skills,
+//				minimumExperience,name);
+//	}
+//
+//	public void addIndustryFilter(int recruiterId, int queryFilterId,
+//			String industry) {
+//		recruiterDao.addFilter(recruiterId, queryFilterId, industry,RecruiterDao.INDUSTRY);
+//
+//	}
+//	public void addSkillFilter(int recruiterId, int queryFilterId,
+//			String skill) {
+//		recruiterDao.addFilter(recruiterId, queryFilterId, skill,RecruiterDao.SKILL);
+//		
+//	}
+//	public void addEducationFilter(int recruiterId, int queryFilterId,
+//			String education) {
+//		recruiterDao.addFilter(recruiterId, queryFilterId, education,RecruiterDao.EDUCATION);
+//		
+//	}
+//	public void setMinimumExperienceFilter(int recruiterId, int queryFilterId,int i){
+//		recruiterDao.setMinimumExperience(recruiterId,queryFilterId,i);
+//	}
 
 }

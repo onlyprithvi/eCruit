@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.mum.cs544.project.ecruit.domain.UserInputFilter;
 import edu.mum.cs544.project.ecruit.service.ProfileService;
 import edu.mum.cs544.project.ecruiter.domain.Profile;
-import edu.mum.cs544.project.ecruiter.domain.QueryFilter;
 
 @Controller
 @RequestMapping(value="profiles")
@@ -20,7 +19,7 @@ public class ProfileController {
 	@Autowired
 	ProfileService service;
 	
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String getAllProfiles(Model m){
 		List<Profile> profileLst= service.getAllProfiles();
 		m.addAttribute("filter",new UserInputFilter());

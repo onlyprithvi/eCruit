@@ -36,13 +36,13 @@ LinkedIn list of profiles.
 			<tr>
 				<td>${profile.name}</td>
 				<td>${profile.industry}</td>
-				<%-- <td><c:forEach items="${profile.skills}" var="skill">
+				<td><c:forEach items="${profile.skills}" var="skill">
 						${skill};
 					</c:forEach></td>
 				<td><c:forEach items="${profile.education}" var="edu">
 						${edu};
 					</c:forEach></td>
-				<td>${profile.experience}</td> --%>
+				<td>${profile.experience}</td>
 				<td><a href="${profile.url}" target="_blank">View Linked
 						Profile</a></td>
 			</tr>
