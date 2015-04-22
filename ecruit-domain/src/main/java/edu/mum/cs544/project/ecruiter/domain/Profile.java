@@ -30,6 +30,9 @@ public class Profile {
 		return url;
 	}
 
+	public Profile() {
+	}
+
 	public Profile(String url, String name, String industry,
 			List<String> skills, List<String> education, int experience) {
 		super();
@@ -85,13 +88,10 @@ public class Profile {
 		this.education = education;
 	}
 
-
-
 	public void addSkill(String skill) {
 		if (!skills.contains(skill)) {
 			skills.add(skill);
 		}
 	}
-	
 
 }
