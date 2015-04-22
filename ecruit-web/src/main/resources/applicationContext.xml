@@ -5,7 +5,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
@@ -20,7 +22,7 @@
 
 	<!-- The jpa:repositories scans for all interfaces that extend JpaRepository 
 		and creates implementations for use at runtime. -->
-	<!-- <jpa:repositories base-package="edu.mum.cs544.project.ecruit.repository" /> -->
+	<jpa:repositories base-package="edu.mum.cs544.project.ecruit.repository" />
 	
 	
 	<bean id="dataSource"
@@ -52,6 +54,10 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManager" />
 	</bean>	
+	<!-- Scan for transaction-based resources -->
+	<context:component-scan base-package="edu.mum.cs544.project.ecruit.service" />
+	<context:component-scan base-package="edu.mum.cs544.project.ecruit.domain" />
+	<context:component-scan base-package="edu.mum.cs544.project.ecruit.repository" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
