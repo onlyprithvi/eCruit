@@ -69,16 +69,17 @@
 	<bean id="queryFilter"
 		class="edu.mum.cs544.project.ecruiter.domain.QueryFilter">
 	</bean>
-	<bean id="recruiterDao"
-		class="edu.mum.cs544.project.ecruiter.dao.RecruiterDao">
-	<property name="sf" ref="sessionFactory"></property>
-	</bean>
-	<bean id="recruiterService"
-		class="edu.mum.cs544.project.ecruiter.service.RecruiterService">
-		<property name="recruiterDao" ref="recruiterDao"></property>
-	</bean>
+	
+	
 	<bean id="queryFilterService"
 		class="edu.mum.cs544.project.ecruiter.service.QueryFilterService">
+		<property name="sf" ref="sessionFactory">
+			
+		</property>
+		<property name="queryFilterDao" ref="queryFilterDao"></property>
+	</bean>
+	<bean id="queryFilterDao"
+		class="edu.mum.cs544.project.ecruiter.dao.QueryFilterDao">
 		<property name="sf" ref="sessionFactory"></property>
 	</bean>
 </beans>

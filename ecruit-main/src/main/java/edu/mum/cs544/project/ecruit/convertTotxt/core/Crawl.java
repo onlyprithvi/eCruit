@@ -12,12 +12,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.scheduling.annotation.Async;
-
 import edu.mum.cs544.project.ecruiter.domain.Profile;
 import edu.mum.cs544.project.ecruiter.service.ProfileService;
 import edu.mum.cs544.project.ecruiter.service.QueryFilterService;
-import edu.mum.cs544.project.ecruiter.service.RecruiterService;
 
 public class Crawl {
 
@@ -52,8 +49,8 @@ public class Crawl {
 
 		
 		
-		RecruiterService rs=context.getBean("recruiterService",RecruiterService.class);
-		rs.createRecruiter("Kaushal");
+		QueryFilterService rs=context.getBean("queryFilterService",QueryFilterService.class);
+//		rs.createRecruiter("Kaushal");
 		rs.addFilter(1, "Information Technology and Services", educations, skills, 20,"one");
 		
 //		rs.createRecruiter("Prithvi");

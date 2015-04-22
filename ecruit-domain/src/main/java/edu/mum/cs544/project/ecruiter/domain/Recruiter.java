@@ -8,15 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 @Entity
 public class Recruiter {
 	@Id
 	@GeneratedValue
 	private int id;
 	private String name;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<QueryFilter> filters=new ArrayList<QueryFilter>();
+	@OneToMany(cascade = CascadeType.ALL) 
+	private List<QueryFilter> filters = new ArrayList<QueryFilter>();
+
 	public int getId() {
 		return id;
 	}
@@ -30,21 +31,26 @@ public class Recruiter {
 		this.name = name;
 	}
 	
-	public void setFilters(List<QueryFilter> filter){
-		this.filters=filter;
-	}
-	public void addFilter(QueryFilter filter){
-		if(!filters.contains(filter)){
-			filters.add(filter);
-		}
-	}
 	public Recruiter(String name){
 		this.name=name;
 	}
 	
 	
 	
-	public Recruiter(){}
+	public Recruiter(){
+		super();
+	}
+	public void setFilters(List<QueryFilter> filter) {
+		// TODO Auto-generated method stub
+		filters=filter;
+		
+	}
+	public void addFilter(QueryFilter filter) {
+		// TODO Auto-generated method stub
+		if(!filters.contains(filter)){
+			filters.add(filter);
+		}
+	}
 
 	
 
