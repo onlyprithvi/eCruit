@@ -10,8 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<table border>
+LinkedIn list of profiles.
+	<table>
 		<tr>
 			<th>Name</th>
 			<th>Industry</th>
