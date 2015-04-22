@@ -148,19 +148,19 @@ public class UserController {
 		MultipartFile image = user.getProfilePic();
 		if (image != null && !image.isEmpty()) {
 			try {
-				uploadedFile = new File(rootDirectory + "\\resources\\images\\"
-						+ user.getId() + ".png");
+				uploadedFile = new File(rootDirectory + "/resources/images/"
+						+ user.getId() + ".jpg");
 				image.transferTo(uploadedFile);
 			} catch (Exception e) {
 				throw new RuntimeException("Product Image saving failed", e);
 			}
 		}
 		User newUser = userService.find(user.getId());
-		newUser.setPicLocation("/resource/images/" + newUser.getId() + ".png");
+		newUser.setPicLocation("/resource/images/" + newUser.getId() + ".jpg");
 		userService.saveUser(newUser);
 		model.addFlashAttribute("user", newUser);
 		model.addFlashAttribute("message", "Uploaded Successfully");
-		return "redirect:/u/userProfile";
+		return "redirect:/u/settings";
 	}
 
 }

@@ -13,7 +13,7 @@
 <title>eCRUIT serVICE</title>
 <c:set var="base" value="${pageContext.servletContext.contextPath}" />
 <link rel="stylesheet" href="${base}/resource/css/foundation.css"></link>
-<link rel="stylesheet" href="${base}resource/css/main.css"></link>
+<link rel="stylesheet" href="${base}/resource/css/main.css"></link>
 </head>
 <body>
 	<div class="row">

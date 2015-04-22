@@ -29,21 +29,7 @@
 				<td>${user.email}</td>
 				<td>${user.contactNumber}</td>
 				<td>${user.gender}</td>
-				<td>${user.status.name}</td>
-				<td><security:authorize access="hasAnyRole('ROLE_ADMIN')">
-						<c:if test="${user.status.value eq 0}">
-							<a href='<c:url value="/u/enable-user/${user.id}" />'
-								class="button tiny success">Enable</a>
-						</c:if>
-						<c:if test="${user.status.value eq 1}">
-							<a href='<c:url value="/u/disable-user/${user.id}" />'
-								class="button tiny alert">Disable</a>
-						</c:if>
-					 <a href='<c:url value="/u/user/edit/${user.id}" />'
-					class="button tiny">Edit</a>
-						<a href='<c:url value="/u/user/delete/${user.id}" />'
-							class="button tiny alert">Delete</a>
-					</security:authorize></td>
+				<td>${user.status.name}</td>				
 			</tr>
 		</c:forEach>
 	</tbody>
