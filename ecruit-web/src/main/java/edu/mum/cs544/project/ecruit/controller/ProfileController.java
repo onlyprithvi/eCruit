@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.mum.cs544.project.ecruit.domain.UserInputFilter;
 import edu.mum.cs544.project.ecruit.service.ProfileService;
 import edu.mum.cs544.project.ecruiter.domain.Profile;
+import edu.mum.cs544.project.ecruiter.domain.QueryFilter;
 
 @Controller
 @RequestMapping(value="profiles")
@@ -21,6 +23,7 @@ public class ProfileController {
 	@RequestMapping("/")
 	public String getAllProfiles(Model m){
 		List<Profile> profileLst= service.getAllProfiles();
+		m.addAttribute("filter",new UserInputFilter());
 		m.addAttribute("profiles",profileLst);
 		m.addAttribute("partials", "user/viewProfiles");
 		return "layouts/main";
