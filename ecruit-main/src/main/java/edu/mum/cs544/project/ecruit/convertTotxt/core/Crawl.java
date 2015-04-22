@@ -1,10 +1,11 @@
 package edu.mum.cs544.project.ecruit.convertTotxt.core;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import org.hibernate.SessionFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,32 +13,71 @@ import org.jsoup.select.Elements;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import edu.mum.cs544.project.ecruiter.service.ProfileService;
+import edu.mum.cs544.project.ecruiter.service.RecruiterService;
+
 public class Crawl {
 
-	static PersistorService service;
+	static ProfileService profileService;
+	static ApplicationContext context;
 	
 	static Set<String>  s = new HashSet<String>();
 
 	public static void main(String[] args) throws IOException {
-		ApplicationContext context= new ClassPathXmlApplicationContext("context.xml");
-		service= context.getBean("service",PersistorService.class);
-		crawl("http://np.linkedin.com/in/aprithvi");
+		context= new ClassPathXmlApplicationContext("context.xml");
+		profileService= context.getBean("profileService",ProfileService.class);
+//		crawl("http://np.linkedin.com/in/aprithvi");
+		recruit();
+	}
+
+	private static void recruit() {
+		// TODO Auto-generated method stub
+		List<String> industries=new ArrayList<String>();
+		industries.add("IT");
+		industries.add("Management");
+		
+		List<String> skills=new ArrayList<String>();
+		skills.add("java");
+		skills.add("c++");
+		skills.add("c");
+		
+		List<String> educations=new ArrayList<String>();
+		educations.add("Masters");
+		educations.add("Bachelors");
+		
+		
+
+		
+		
+
+		
+		
+		RecruiterService rs=context.getBean("recruiterService",RecruiterService.class);
+		rs.createRecruiter("Kaushal");
+		rs.addFilter(1, industries, educations, skills, 20);
+		
+		rs.createRecruiter("Prithvi");
+		rs.addFilter(2, industries, educations, skills, 30);
+		
+		
+	}
+
+	public static ProfileService getProfileService() {
+		return profileService;
+	}
+
+	public static void setProfileService(ProfileService service) {
+		Crawl.profileService = service;
 	}
 
 	public static void crawl(String url) throws IOException {
 		System.out.println(url);
 		Document doc = Jsoup.connect(url).timeout(10000).get();
-		DocParser parse = new DocParser();
-		Profile p;
 		try {
-			p = parse.parser(doc);
-			service.save(p);
+			DocParser.setDocument(doc);
+			profileService.save(url,DocParser.getName(),DocParser.getIndustry(),DocParser.getSkillSet(),DocParser.getEducation(),DocParser.getExperience());
 		} catch (Exception e) {
 			e.printStackTrace();
-			// nothing to do....
-			// just add the url to error database for developers input if the
-			// url was supposed to be parsed.
-			// continue parsing.
 		}
 
 		Elements questions = doc.select("a[href]");
