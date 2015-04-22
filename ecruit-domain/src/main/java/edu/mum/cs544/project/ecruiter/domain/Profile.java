@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 
 @Entity
@@ -17,10 +18,11 @@ public class Profile {
 	private String industry;
 	private int experience;
 
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable
+	
 	private List<String> skills = new ArrayList<String>();
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable
 	private List<String> education = new ArrayList<String>();
 
@@ -29,6 +31,8 @@ public class Profile {
 	public String getUrl() {
 		return url;
 	}
+	
+	public Profile(){}
 
 	public Profile(String url, String name, String industry,
 			List<String> skills, List<String> education, int experience) {
@@ -91,6 +95,10 @@ public class Profile {
 		if (!skills.contains(skill)) {
 			skills.add(skill);
 		}
+	}
+	
+	public String toString(){
+		return url+","+name+","+experience;
 	}
 	
 

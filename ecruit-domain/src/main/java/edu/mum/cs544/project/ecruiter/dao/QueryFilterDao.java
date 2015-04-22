@@ -20,12 +20,12 @@ public class QueryFilterDao {
 	public QueryFilterDao() {
 	}
 
-	public void createQueryFilter(List<String> industries, List<String> skills,
-			List<String> educations, int minimumExperience)
+	public void createQueryFilter(String industry, List<String> skills,
+			List<String> educations, int minimumExperience, String name)
 
 	{
-		QueryFilter qf = new QueryFilter(industries, skills, educations,
-				minimumExperience);
+		QueryFilter qf = new QueryFilter(industry, skills, educations,
+				minimumExperience,name);
 		sf.getCurrentSession().persist(qf);
 	}
 

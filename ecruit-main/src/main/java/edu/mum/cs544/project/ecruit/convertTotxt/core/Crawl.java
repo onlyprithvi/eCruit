@@ -12,38 +12,38 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.scheduling.annotation.Async;
 
+import edu.mum.cs544.project.ecruiter.domain.Profile;
 import edu.mum.cs544.project.ecruiter.service.ProfileService;
+import edu.mum.cs544.project.ecruiter.service.QueryFilterService;
 import edu.mum.cs544.project.ecruiter.service.RecruiterService;
 
 public class Crawl {
 
 	static ProfileService profileService;
 	static ApplicationContext context;
+	static QueryFilterService queryFilterService;
 	
 	static Set<String>  s = new HashSet<String>();
 
 	public static void main(String[] args) throws IOException {
 		context= new ClassPathXmlApplicationContext("context.xml");
-		profileService= context.getBean("profileService",ProfileService.class);
+//		profileService= context.getBean("profileService",ProfileService.class);
 //		crawl("http://np.linkedin.com/in/aprithvi");
 		recruit();
 	}
 
 	private static void recruit() {
 		// TODO Auto-generated method stub
-		List<String> industries=new ArrayList<String>();
-		industries.add("IT");
-		industries.add("Management");
+		
 		
 		List<String> skills=new ArrayList<String>();
-		skills.add("java");
-		skills.add("c++");
-		skills.add("c");
+		skills.add("Java");
 		
 		List<String> educations=new ArrayList<String>();
-		educations.add("Masters");
-		educations.add("Bachelors");
+		educations.add("BIM,");
+		educations.add("Masters in computer science,");
 		
 		
 
@@ -54,12 +54,28 @@ public class Crawl {
 		
 		RecruiterService rs=context.getBean("recruiterService",RecruiterService.class);
 		rs.createRecruiter("Kaushal");
-		rs.addFilter(1, industries, educations, skills, 20);
+		rs.addFilter(1, "Information Technology and Services", educations, skills, 20,"one");
 		
-		rs.createRecruiter("Prithvi");
-		rs.addFilter(2, industries, educations, skills, 30);
+//		rs.createRecruiter("Prithvi");
+//		rs.addFilter(2, "Computer Software", educations, skills, 30,"Two");
+//		
+//		QueryFilterService qfs=new QueryFilterService();
+		List<Profile> profiles=queryFilterService.executeQueryFilter(1, 1);
+		
+		for(Profile p:profiles){
+//			p.toString();
+			System.out.println(p.toString());
+		}
 		
 		
+	}
+
+	public static QueryFilterService getQueryFilterService() {
+		return queryFilterService;
+	}
+
+	public static void setQueryFilterService(QueryFilterService queryFilterService) {
+		Crawl.queryFilterService = queryFilterService;
 	}
 
 	public static ProfileService getProfileService() {
@@ -69,7 +85,8 @@ public class Crawl {
 	public static void setProfileService(ProfileService service) {
 		Crawl.profileService = service;
 	}
-
+	
+//	@Async
 	public static void crawl(String url) throws IOException {
 		System.out.println(url);
 		Document doc = Jsoup.connect(url).timeout(10000).get();

@@ -48,10 +48,10 @@ public class RecruiterService {
 
 	}
 
-	public void addFilter(int recruiterId, List<String> industries,
-			List<String> educations, List<String> skills, int minimumExperience) {
-		recruiterDao.addFilter(recruiterId, industries, educations, skills,
-				minimumExperience);
+	public void addFilter(int recruiterId, String industry,
+			List<String> educations, List<String> skills, int minimumExperience,String name) {
+		recruiterDao.addFilter(recruiterId, industry, educations, skills,
+				minimumExperience,name);
 	}
 
 	public void addIndustryFilter(int recruiterId, int queryFilterId,

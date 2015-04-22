@@ -14,9 +14,9 @@ public class QueryFilter {
 	@Id
 	@GeneratedValue
 	private int id;
-	@ElementCollection
-	@CollectionTable
-	private List<String> industries=new ArrayList<String>();
+	
+	private String industry;
+	private String filterName;
 	
 	@ElementCollection
 	@CollectionTable
@@ -31,15 +31,26 @@ public class QueryFilter {
 	public QueryFilter(){}
 	
 	
-	public QueryFilter(List<String> industries, List<String> skills,
-			List<String> educations,int minimumExperience) {
+	public QueryFilter(String industry, List<String> skills,
+			List<String> educations,int minimumExperience,String filterName) {
 		super();
-		this.industries = industries;
+		this.industry = industry;
 		this.skills = skills;
 		this.educations = educations;
 		this.minimumExperience=minimumExperience;
+		this.filterName=filterName;
 	}
 	
+	public String getFilterName() {
+		return filterName;
+	}
+
+
+	public void setFilterName(String filterName) {
+		this.filterName = filterName;
+	}
+
+
 	public int getMinimumExperience() {
 		return minimumExperience;
 	}
@@ -54,11 +65,11 @@ public class QueryFilter {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public List<String> getIndustries() {
-		return industries;
+	public String getIndustry() {
+		return industry;
 	}
-	public void setIndustries(List<String> industries) {
-		this.industries = industries;
+	public void setIndustry(String industry) {
+		this.industry = industry;
 	}
 	public List<String> getSkills() {
 		return skills;
@@ -73,11 +84,7 @@ public class QueryFilter {
 		this.educations = educations;
 	}
 	
-	public void addIndustry(String industry){
-		if(!industries.contains(industry)){
-			industries.add(industry);
-		}
-	}
+	
 	public void addSkill(String skill){
 		if(!skills.contains(skill)){
 			skills.add(skill);

@@ -46,12 +46,12 @@ public class RecruiterDao {
 
 	}
 
-	public void addFilter(int recruiterId, List<String> industries,
-			List<String> educations, List<String> skills, int minimumExperience) {
+	public void addFilter(int recruiterId, String industry,
+			List<String> educations, List<String> skills, int minimumExperience,String name) {
 		Recruiter rec = (Recruiter) sf.getCurrentSession().load(
 				Recruiter.class, recruiterId);
-		QueryFilter qf = new QueryFilter(industries, skills, educations,
-				minimumExperience);
+		QueryFilter qf = new QueryFilter(industry, skills, educations,
+				minimumExperience,name);
 		rec.addFilter(qf);
 		sf.getCurrentSession().update(rec);
 
@@ -69,7 +69,7 @@ public class RecruiterDao {
 		QueryFilter qf = (QueryFilter) query.uniqueResult();
 		switch (filterType) {
 		case INDUSTRY:
-			qf.addIndustry(filter);
+			qf.setIndustry(filter);
 			break;
 		case SKILL:
 			qf.addSkill(filter);
