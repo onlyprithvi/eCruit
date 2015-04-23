@@ -1,6 +1,5 @@
 package edu.mum.cs544.project.ecruit.controller;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.mum.cs544.project.ecruit.domain.UserInputFilter;
-import edu.mum.cs544.project.ecruit.service.ProfileService;
-import edu.mum.cs544.project.ecruiter.domain.Profile;
+import edu.mum.cs544.project.ecruit.profile.Profile;
+import edu.mum.cs544.project.ecruit.profile.ProfileService;
 
 @Controller
 @RequestMapping(value="profiles")

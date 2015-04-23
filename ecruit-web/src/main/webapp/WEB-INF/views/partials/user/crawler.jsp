@@ -14,50 +14,27 @@
 <body>
 	<div class="row">
 		<div class="small-8 small-centered columns">
-			<form:form modelAttribute="user" method="post" action="changePassword">
+			<form:form>
 				<fieldset>
 					<legend>eCRUIT serVICE :Crawler</legend>
-					
-						<div class="label alert register-error">${message}</div>
+					<div class="label alert register-error">${message}</div>
 					<div class="row">
 						<div class="large-3 columns">
-							<label class="right"><spring:message code="crawler.start.label" /></label>
+							<label class="right"><spring:message
+									code="crawler.start.label" /></label>
 						</div>
 						<div class="large-6 columns">
-							<form:input type="password" path="oldLoginPassword" />
-						</div>
-						
-					</div>
-				
-					<div class="row">
-						<div class="large-3 columns">
-							<label class="right"><spring:message code="user.newpassword.label" /></label>
-						</div>
-						<div class="large-6 columns">
-							<form:input type="password" path="loginPassword" />
-						</div>
-						<div class="large-3 columns">
-							<form:errors class="label alert" path="loginPassword" />
+							<input id="crawlerURL" value="crawlerURL" />
 						</div>
 					</div>
+
 					<div class="row">
-						<div class="large-3 columns">
-							<label class="right"><spring:message code="user.cnewpassword.label" /></label>
-						</div>
-						<div class="large-6 columns">
-							<form:input type="password" path="confirmLoginPassword" />
-						</div>
-						<div class="large-3 columns">
-							<form:errors class="label alert" path="confirmLoginPassword" />
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="large-3 columns">
-						</div>
+						<div class="large-3 columns"></div>
 						<div class="large-9 columns">
-							<label>
-								<input type="submit" value="CHANGE PASSWORD" class="button tiny" />
+							<label> <a
+								href='<c:url value="/a/crawl/${crawlerURL}" />'
+								class="button tiny">Edit</a> <input type="submit"
+								value="DO CRAWL" class="button tiny" />
 							</label>
 						</div>
 					</div>

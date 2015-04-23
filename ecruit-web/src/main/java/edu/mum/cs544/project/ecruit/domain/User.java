@@ -27,7 +27,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.mum.cs544.project.ecruiter.domain.QueryFilter;
+import edu.mum.cs544.project.ecruit.domain.QueryFilter;
 
 @Entity
 @Table(name = "USER")
