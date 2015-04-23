@@ -14,10 +14,10 @@
 <body>
 	<div class="row">
 		<div class="small-8 small-centered columns">
-			<form:form action="crawl" method="post" >
+			<form:form action="crawl" method="post">
 				<fieldset>
 					<legend>Crawler</legend>
-					<div class="label alert register-error">${message}</div>
+					<div class="label">${message}</div>
 					<div class="row">
 						<div class="large-5 columns">
 							<label class="right"><spring:message
@@ -27,10 +27,12 @@
 							<input id="crawlerURL" name="crawlerURL" />
 						</div>
 						<div class="large-3 columns">
-							<label><input type="submit" value="START CRAWLING" class="button tiny" />
+							<label><input type="submit" value="START CRAWLING"
+								class="button tiny" /> <a
+								href='<c:url value="/a/crawl/stop" />' class="button tiny">Stop</a>
 							</label>
 						</div>
-					</div>					
+					</div>
 				</fieldset>
 			</form:form>
 		</div>
