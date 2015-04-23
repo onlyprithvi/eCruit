@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.mum.cs544.project.ecruit.crawler.Crawl;
 import edu.mum.cs544.project.ecruit.service.impl.CrawlerService;
 
 @Controller
@@ -19,7 +18,8 @@ public class CrawlerController {
 
 	private String mainView;
 	
-	CrawlerService crawlService;
+	@Autowired
+	CrawlerService crawlerService;
 
 	public CrawlerController() {
 		mainView = "/layouts/main";
@@ -27,8 +27,9 @@ public class CrawlerController {
 
 	@RequestMapping(value = "/crawl", method = RequestMethod.POST)
 	public String doCrawl(@RequestParam("crawlerURL") String crawlerURL,RedirectAttributes redirectAttr) throws IOException {
-		crawlService=new CrawlerService(10, crawlerURL);
-		crawlService.executeCrawl();
+		crawlerService.setUrl(crawlerURL);
+		crawlerService.setPoolSize(10);
+		crawlerService.executeCrawl();
 		redirectAttr.addFlashAttribute("message",
 				"Crawling has been started in backend.....");
 		return "redirect:/a/crawl";

@@ -18,20 +18,20 @@ import edu.mum.cs544.project.ecruit.service.ProfileService;
 
 @Service
 public class CrawlerService {
-	
+
 	@Autowired
 	ProfileService profileService;
-	private final ExecutorService pool;	
+	private  ExecutorService pool;
 	private String url = "";
 	static Set<String> s = new HashSet<String>();
-	
-	public CrawlerService(){
-		pool = Executors.newFixedThreadPool(10);		
+
+	public CrawlerService() {
+
 	}
 
 	public CrawlerService(int poolSize, String url) {
-		pool = Executors.newFixedThreadPool(poolSize);		
-		this.url =url;
+		pool = Executors.newFixedThreadPool(poolSize);
+		this.url = url;
 	}
 
 	public void executeCrawl() {
@@ -45,9 +45,8 @@ public class CrawlerService {
 			}
 		});
 	}
-	
-	
-	public  void crawl(String url) throws IOException {
+
+	public void crawl(String url) throws IOException {
 		System.out.println(url);
 		Document doc = Jsoup.connect(url).timeout(10000).get();
 		try {
@@ -78,6 +77,16 @@ public class CrawlerService {
 				}
 			}
 		}
+	}
+
+	public void setUrl(String crawlerURL) {
+		this.url = crawlerURL;
+
+	}
+
+	public void setPoolSize(int i) {
+		this.pool = Executors.newFixedThreadPool(10);
+
 	}
 
 }
