@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -18,11 +19,11 @@ public class QueryFilter {
 	private String industry;
 	private String filterName;
 	
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable
 	private List<String> skills=new ArrayList<String>();
 	
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable
 	private List<String> educations=new ArrayList<String>();
 	

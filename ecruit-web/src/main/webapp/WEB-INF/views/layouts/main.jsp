@@ -32,6 +32,9 @@
 				
 				<a href="<c:url value="/profiles?page=0" />" class="item"> 
 					<label><spring:message code="profile.label"/></label>
+				</a>	
+				<a href="<c:url value="/viewQuery" />" class="item"> 
+					<label><spring:message code="viewQuery.label"/></label>
 				</a>
 					
 				<a  href="<c:url value="/u/settings" />" class="item">

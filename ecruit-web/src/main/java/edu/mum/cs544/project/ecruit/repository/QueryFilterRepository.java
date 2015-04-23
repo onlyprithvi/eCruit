@@ -15,7 +15,7 @@ import edu.mum.cs544.project.ecruit.domain.QueryFilter;
 //@Transactional(propagation=Propagation.MANDATORY)
 public interface QueryFilterRepository extends CrudRepository<QueryFilter, Integer> {
 	
-	@Query("SELECT q FROM User u join u.filters q where u.id=:id")
+	@Query("SELECT u.filters FROM User u where u.id=:id")
 	List<QueryFilter> getQueryFilters(@Param("id") Long key);
 	
 
