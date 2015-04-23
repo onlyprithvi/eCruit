@@ -155,8 +155,8 @@ public class QueryFilterService {
 			qf.setEducations(null);
 
 		} else {
-			for (String token : filter.getSkills().split(",")) {
-				skills.add(token.trim());
+			for (String token : filter.getEducation().split(",")) {
+				educations.add(token.trim());
 			}
 			qf.setEducations(educations);
 
@@ -181,7 +181,6 @@ public class QueryFilterService {
 			qf.setIndustry(filter.getIndustry());
 		}
 		qf.setFilterName(filter.getName().trim().isEmpty() ? "temp" : filter.getName());
-		qf.setId(-1);
 		return qf;
 
 	}
