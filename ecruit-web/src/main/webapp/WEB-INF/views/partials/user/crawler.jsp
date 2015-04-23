@@ -14,9 +14,9 @@
 <body>
 	<div class="row">
 		<div class="small-8 small-centered columns">
-			<form:form>
+			<form:form action="crawl" method="post" >
 				<fieldset>
-					<legend>eCRUIT serVICE :Crawler</legend>
+					<legend>Crawler</legend>
 					<div class="label alert register-error">${message}</div>
 					<div class="row">
 						<div class="large-5 columns">
@@ -24,12 +24,10 @@
 									code="crawler.start.label" /></label>
 						</div>
 						<div class="large-3 columns">
-							<input id="crawlerURL" value="" />
+							<input id="crawlerURL" name="crawlerURL" />
 						</div>
 						<div class="large-3 columns">
-							<label> <a
-								href='<c:url value="/a/crawl/${crawlerURL}" />'
-								class="button tiny">DO CRAWL</a> 
+							<label><input type="submit" value="START CRAWLING" class="button tiny" />
 							</label>
 						</div>
 					</div>					

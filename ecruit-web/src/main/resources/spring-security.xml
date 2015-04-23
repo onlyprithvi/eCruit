@@ -26,8 +26,8 @@
 		<intercept-url pattern="/u/**" access="ROLE_ADMIN,ROLE_USER" />
 		
 		<form-login login-page="/login" authentication-failure-url="/error-login"
-			default-target-url="/dashboard" />
-		<logout logout-success-url="/" />
+			default-target-url="/dashboard" always-use-default-target="true"/>
+		<logout invalidate-session="true" logout-success-url="/" delete-cookies="JSESSIONID" />
 	</http>
 
 	<authentication-manager>

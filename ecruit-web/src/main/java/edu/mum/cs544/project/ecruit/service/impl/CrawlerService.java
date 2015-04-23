@@ -1,66 +1,52 @@
-package edu.mum.cs544.project.ecruit.convertTotxt.core;
+package edu.mum.cs544.project.ecruit.service.impl;
 
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import edu.mum.cs544.project.ecruit.crawler.DocParser;
 import edu.mum.cs544.project.ecruit.service.ProfileService;
 
-public class Crawl {
-
+@Service
+public class CrawlerService {
+	
 	@Autowired
 	ProfileService profileService;
-
+	private final ExecutorService pool;	
+	private String url = "";
 	static Set<String> s = new HashSet<String>();
+	
+	public CrawlerService(){
+		pool = Executors.newFixedThreadPool(10);		
+	}
 
-/*	public static void main(String[] args) throws IOException {
-		//context = new ClassPathXmlApplicationContext("context.xml");
+	public CrawlerService(int poolSize, String url) {
+		pool = Executors.newFixedThreadPool(poolSize);		
+		this.url =url;
+	}
 
-		crawl("https://www.linkedin.com/in/deeprisal");
-		//recruit();
-
-	}*/
-
-	/*
-	 * private static void recruit() { // TODO Auto-generated method stub
-	 * 
-	 * 
-	 * List<String> skills=new ArrayList<String>(); skills.add("Java");
-	 * 
-	 * List<String> educations=new ArrayList<String>(); educations.add("BIM,");
-	 * educations.add("Masters in computer science,");
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * QueryFilterService
-	 * rs=context.getBean("queryFilterService",QueryFilterService.class); //
-	 * rs.createRecruiter("Kaushal"); rs.addFilter(1,
-	 * "Information Technology and Services", educations, skills, 20,"one");
-	 * 
-	 * // rs.createRecruiter("Prithvi"); // rs.addFilter(2, "Computer Software",
-	 * educations, skills, 30,"Two"); // // QueryFilterService qfs=new
-	 * QueryFilterService(); List<Profile>
-	 * profiles=queryFilterService.executeQueryFilter(1, 1);
-	 * 
-	 * for(Profile p:profiles){ // p.toString();
-	 * System.out.println(p.toString()); }
-	 * 
-	 * 
-	 * }
-	 */
-
-	// @Async
+	public void executeCrawl() {
+		pool.execute(new Runnable() {
+			public void run() {
+				try {
+					crawl(url);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	
 	public  void crawl(String url) throws IOException {
 		System.out.println(url);
 		Document doc = Jsoup.connect(url).timeout(10000).get();
@@ -93,4 +79,5 @@ public class Crawl {
 			}
 		}
 	}
+
 }

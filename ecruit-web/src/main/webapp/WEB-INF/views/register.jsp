@@ -8,6 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>eCRUIT serVICE</title>
+<link rel="stylesheet" href="resource/css/foundation.css"></link>
+<link rel="stylesheet" href="resource/css/main.css"></link>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
