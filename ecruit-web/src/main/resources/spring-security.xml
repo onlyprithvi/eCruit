@@ -20,8 +20,7 @@
 		<intercept-url pattern="/check-availability/username/*"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/register" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/dashboard" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/register" access="IS_AUTHENTICATED_ANONYMOUSLY" />		
 		<intercept-url pattern="/error-login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/a/**" access="ROLE_ADMIN" />
 		<intercept-url pattern="/u/**" access="ROLE_ADMIN,ROLE_USER" />

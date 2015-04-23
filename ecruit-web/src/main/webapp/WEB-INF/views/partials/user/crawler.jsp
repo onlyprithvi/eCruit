@@ -19,25 +19,20 @@
 					<legend>eCRUIT serVICE :Crawler</legend>
 					<div class="label alert register-error">${message}</div>
 					<div class="row">
-						<div class="large-3 columns">
+						<div class="large-5 columns">
 							<label class="right"><spring:message
 									code="crawler.start.label" /></label>
 						</div>
-						<div class="large-6 columns">
-							<input id="crawlerURL" value="crawlerURL" />
+						<div class="large-3 columns">
+							<input id="crawlerURL" value="" />
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="large-3 columns"></div>
-						<div class="large-9 columns">
+						<div class="large-3 columns">
 							<label> <a
 								href='<c:url value="/a/crawl/${crawlerURL}" />'
-								class="button tiny">Edit</a> <input type="submit"
-								value="DO CRAWL" class="button tiny" />
+								class="button tiny">DO CRAWL</a> 
 							</label>
 						</div>
-					</div>
+					</div>					
 				</fieldset>
 			</form:form>
 		</div>

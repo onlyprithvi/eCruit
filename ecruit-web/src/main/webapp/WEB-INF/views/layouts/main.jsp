@@ -27,10 +27,9 @@
 				<a href="<c:url value="/u/users" />" class="item"> 					
 					<label><spring:message code="users.label"/></label>
 				</a> 
-				</security:authorize>
-				<a href="<c:url value="/j_spring_security_logout" />" class="item"> 
-					<img src="${base}/resource/images/logout.png">
-					<label><spring:message code="logout.label"/></label>
+				</security:authorize>				
+				<a href="<c:url value="/a/crawl" />" class="item"> 					
+					<label><spring:message code="crawler.label"/></label>
 				</a>
 				
 				<a href="<c:url value="/profiles" />" class="item"> 
