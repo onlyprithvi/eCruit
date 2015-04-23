@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.BatchSize;
+
 @Entity
 public class QueryFilter {
 	@Id
@@ -19,10 +21,12 @@ public class QueryFilter {
 	private String industry;
 	private String filterName;
 	
+//	@BatchSize(size=50)
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable
 	private List<String> skills=new ArrayList<String>();
 	
+//	@BatchSize(size=50)
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable
 	private List<String> educations=new ArrayList<String>();

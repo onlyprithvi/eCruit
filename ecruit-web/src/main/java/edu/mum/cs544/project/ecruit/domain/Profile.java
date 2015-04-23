@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.BatchSize;
+
 @Entity
 public class Profile {
 
@@ -18,10 +20,13 @@ public class Profile {
 	private String industry;
 	private int experience;
 
+//	@BatchSize(size=50)
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable
 	
 	private List<String> skills = new ArrayList<String>();
+	
+//	@BatchSize(size=50)
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable
 	private List<String> education = new ArrayList<String>();

@@ -54,7 +54,8 @@ public class DocParser {
 		List<String> edu = new ArrayList<String>();
 		for (Element e : (document.getElementById("background-education")
 				.getElementsByClass("degree"))) {
-			edu.add(e.text());
+			String text=e.text().replaceAll(",", "");
+			edu.add(text);
 		}
 		return edu;
 
