@@ -1,4 +1,4 @@
-package edu.mum.cs544.project.ecruit.profile;
+package edu.mum.cs544.project.ecruit.service.impl;
 
 import java.util.List;
 
@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import edu.mum.cs544.project.ecruit.domain.Profile;
+import edu.mum.cs544.project.ecruit.repository.ProfileRepository;
+import edu.mum.cs544.project.ecruit.service.ProfileService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRES_NEW)

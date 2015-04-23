@@ -10,11 +10,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import edu.mum.cs544.project.ecruit.profile.ProfileService;
+import edu.mum.cs544.project.ecruit.service.ProfileService;
 
 public class Crawl {
 
-	//@Autowired//
+	@Autowired
 	ProfileService profileService;
 
 	static Set<String> s = new HashSet<String>();

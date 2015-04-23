@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.mum.cs544.project.ecruit.domain.Profile;
 import edu.mum.cs544.project.ecruit.domain.QueryFilter;
 import edu.mum.cs544.project.ecruit.domain.User;
-import edu.mum.cs544.project.ecruit.profile.Profile;
-import edu.mum.cs544.project.ecruit.profile.ProfileService;
 import edu.mum.cs544.project.ecruit.repository.QueryFilterRepository;
+import edu.mum.cs544.project.ecruit.service.ProfileService;
 import edu.mum.cs544.project.ecruit.service.UserService;
 
 @Service

@@ -1,4 +1,4 @@
-package edu.mum.cs544.project.ecruit.profile;
+package edu.mum.cs544.project.ecruit.repository;
 
 import java.util.List;
 
@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.mum.cs544.project.ecruit.domain.Profile;
+
 @Repository
-@Transactional(propagation=Propagation.MANDATORY)
 public interface ProfileRepository extends CrudRepository<Profile, Long>{
 
 	@Query("SELECT p FROM Profile p")

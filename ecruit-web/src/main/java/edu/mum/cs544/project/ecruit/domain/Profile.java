@@ -1,4 +1,4 @@
-package edu.mum.cs544.project.ecruit.profile;
+package edu.mum.cs544.project.ecruit.domain;
 
 import java.util.ArrayList;
 import java.util.List;

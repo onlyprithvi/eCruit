@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.mum.cs544.project.ecruit.domain.Profile;
 import edu.mum.cs544.project.ecruit.domain.UserInputFilter;
-import edu.mum.cs544.project.ecruit.profile.Profile;
-import edu.mum.cs544.project.ecruit.profile.ProfileService;
+import edu.mum.cs544.project.ecruit.service.ProfileService;
 
 @Controller
 @RequestMapping(value="profiles")

@@ -119,11 +119,12 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
-		</dependency>		
+		</dependency>
+
 		<dependency>
-			<groupId>edu.mum.cs544.project</groupId>
-			<version>0.0.1-SNAPSHOT</version>
-			<artifactId>ecruit-main</artifactId>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.2</version>
 		</dependency>
 	</dependencies>
 

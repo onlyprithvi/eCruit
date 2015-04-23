@@ -1,6 +1,8 @@
-package edu.mum.cs544.project.ecruit.profile;
+package edu.mum.cs544.project.ecruit.service;
 
 import java.util.List;
+
+import edu.mum.cs544.project.ecruit.domain.Profile;
 
 public interface ProfileService {
 	

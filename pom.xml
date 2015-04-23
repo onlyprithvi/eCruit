@@ -8,7 +8,6 @@
 	<name>eCruit</name>
 	
 	<modules>
-        <module>ecruit-main</module>      
         <module>ecruit-web</module>        
     </modules>
 </project>
