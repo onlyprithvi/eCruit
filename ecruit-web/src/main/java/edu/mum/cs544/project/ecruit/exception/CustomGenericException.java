@@ -9,7 +9,7 @@ public class CustomGenericException extends RuntimeException {
 	public CustomGenericException(String title, String message) {
 		super();
 		this.title = title;
-		this.message = message;
+		this.message = getStackTrace().toString();
 	}
 	public String getTitle() {
 		return title;
@@ -18,7 +18,7 @@ public class CustomGenericException extends RuntimeException {
 		this.title = title;
 	}
 	public String getMessage() {
-		return message;
+		return getStackTrace().toString();
 	}
 	public void setMessage(String message) {
 		this.message = message;

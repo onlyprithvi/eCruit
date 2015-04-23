@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-LinkedIn list of profiles.
+	LinkedIn list of profiles.
 	<table>
 		<tr>
 			<th>Name</th>
@@ -21,14 +21,14 @@ LinkedIn list of profiles.
 			<th>Action</th>
 		</tr>
 		<tr>
-			<form:form commandName="filter">
-				<th><form:input path="${filter.name}" /></th>
-				<th><form:input path="${filter.industry}" /></th>
-				<th><form:input path="${filter.skills}" /></th>
-				<th><form:input path="${filter.education}" /></th>
-				<th><form:input path="${filter.experience}" /></th>
-				<th><input type="submit" name="action" value="Save" /> <input
-					type="submit" name="action" value="Apply" /></th>
+			<form:form modelAttribute="userFilter" method="post">
+				<th><form:input path="name" /></th>
+				<th><form:input path="industry" /></th>
+				<th><form:input path="skills" /></th>
+				<th><form:input path="education" /></th>
+				<th><form:input path="experience" /></th>
+				<th><input type="submit" name="save" value="Save" /> <input
+					type="submit" name="apply" value="Apply" /></th>
 			</form:form>
 		</tr>
 
@@ -43,11 +43,18 @@ LinkedIn list of profiles.
 						${edu};
 					</c:forEach></td>
 				<td>${profile.experience}</td>
-				<td><a href="${profile.url}" target="_blank">View Linked
-						Profile</a></td>
+				<td><a href="${profile.url}" target="_blank">View Profile</a></td>
 			</tr>
 		</c:forEach>
-
 	</table>
+	<div align="center">
+		<c:if test="${pageno gt 0}">
+			<a href="?page=${pageno-1}">Previous</a>
+		</c:if>
+		${pageno}
+		<c:if test="${pageno lt maxPageno}">
+			<a href="?page=${pageno+1}">Next</a>
+		</c:if>
+	</div>
 </body>
 </html>

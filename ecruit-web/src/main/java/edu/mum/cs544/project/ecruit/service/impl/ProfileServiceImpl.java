@@ -3,6 +3,8 @@ package edu.mum.cs544.project.ecruit.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,9 +19,14 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Autowired
 	ProfileRepository profileRepository;
+	
+	
+	@Autowired
+	QueryFilterService queryService;
 
-	public List<Profile> getAllProfiles() {
-		return profileRepository.getAllProfiles();
+	public List<Profile> getAllProfiles(int page,int pageSize) {
+		Pageable pageable= new PageRequest(page, pageSize);
+		return profileRepository.getAllProfiles(pageable);
 	}
 
 	public void save(String url, String name, String industry,
@@ -30,6 +37,16 @@ public class ProfileServiceImpl implements ProfileService {
 
 	public Profile getProfile(String url) {
 		return profileRepository.findProfileByURL(url);
+	}
+
+	@Override
+	public Long getMaxPage(int pageSize) {
+		return (long) Math.ceil(profileRepository.getMaxrecords()/pageSize);
+	}
+
+	@Override
+	public List<Profile> getAllProfiles() {
+		return profileRepository.getAllProfiles();
 	}
 
 }

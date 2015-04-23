@@ -13,7 +13,7 @@
 <title>eCRUIT serVICE</title>
 <c:set var="base" value="${pageContext.servletContext.contextPath}" />
 <link rel="stylesheet" href="${base}/resource/css/foundation.css"></link>
-<link rel="stylesheet" href="${base}/resource/css/main.css"></link>
+<link rel="stylesheet" href="${base}resource/css/main.css"></link>
 </head>
 <body>
 	<div class="row">
@@ -28,12 +28,9 @@
 					<label><spring:message code="users.label"/></label>
 				</a> 
 				</security:authorize>
-				<a href="<c:url value="/j_spring_security_logout" />" class="item"> 
-					<img src="${base}/resource/images/logout.png">
-					<label><spring:message code="logout.label"/></label>
-				</a>
 				
-				<a href="<c:url value="/profiles" />" class="item"> 
+				
+				<a href="<c:url value="/profiles?page=0" />" class="item"> 
 					<label><spring:message code="profile.label"/></label>
 				</a>
 					
