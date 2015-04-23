@@ -25,6 +25,7 @@ public class CrawlerService {
 	private  ExecutorService pool;
 	private String url = "";
 	static Set<String> s = new HashSet<String>();
+	private boolean doCrawl=true;
 
 	public CrawlerService() {
 
@@ -36,6 +37,7 @@ public class CrawlerService {
 	}
 
 	public void executeCrawl() {
+		doCrawl=true;
 		pool.execute(new Runnable() {
 			public void run() {
 				try {
@@ -48,6 +50,7 @@ public class CrawlerService {
 	}
 
 	public void crawl(String url) throws IOException {
+		if(!doCrawl)return;
 		System.out.println(url);
 		Document doc = Jsoup.connect(url).timeout(10000).get();
 		try {
@@ -83,7 +86,9 @@ public class CrawlerService {
 	
 	
 	public void stopCrawler(){
-		 pool.shutdownNow(); // Disable new tasks from being submitted
+		doCrawl=false;
+		 
+
 		   
 	}
 
