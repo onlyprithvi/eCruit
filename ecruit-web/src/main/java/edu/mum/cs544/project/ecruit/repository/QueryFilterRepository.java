@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.mum.cs544.project.ecruit.domain.QueryFilter;
 
 @Repository
-@Transactional(propagation=Propagation.MANDATORY)
+//@Transactional(propagation=Propagation.MANDATORY)
 public interface QueryFilterRepository extends CrudRepository<QueryFilter, Integer> {
 	
-	@Query("SELECT q FROM User u join u.filters q where u.id=:id")
+	@Query("SELECT u.filters FROM User u where u.id=:id")
 	List<QueryFilter> getQueryFilters(@Param("id") Long key);
 	
 

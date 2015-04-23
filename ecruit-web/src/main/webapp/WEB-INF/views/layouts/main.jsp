@@ -13,7 +13,7 @@
 <title>eCRUIT serVICE</title>
 <c:set var="base" value="${pageContext.servletContext.contextPath}" />
 <link rel="stylesheet" href="${base}/resource/css/foundation.css"></link>
-<link rel="stylesheet" href="${base}/resource/css/main.css"></link>
+<link rel="stylesheet" href="${base}resource/css/main.css"></link>
 </head>
 <body>
 	<div class="row">
@@ -27,13 +27,21 @@
 				<a href="<c:url value="/u/users" />" class="item"> 					
 					<label><spring:message code="users.label"/></label>
 				</a> 
+<<<<<<< HEAD
 				</security:authorize>				
 				<a href="<c:url value="/a/crawl" />" class="item"> 					
 					<label><spring:message code="crawler.label"/></label>
 				</a>
+=======
+				</security:authorize>
+>>>>>>> fbea7200017bcf55e65ff5ee860f68793189b9dd
 				
-				<a href="<c:url value="/profiles" />" class="item"> 
+				
+				<a href="<c:url value="/profiles?page=0" />" class="item"> 
 					<label><spring:message code="profile.label"/></label>
+				</a>	
+				<a href="<c:url value="/viewQuery" />" class="item"> 
+					<label><spring:message code="viewQuery.label"/></label>
 				</a>
 					
 				<a  href="<c:url value="/u/settings" />" class="item">

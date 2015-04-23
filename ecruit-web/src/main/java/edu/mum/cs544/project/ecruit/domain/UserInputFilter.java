@@ -6,7 +6,6 @@ public class UserInputFilter {
 	private String skills;
 	private String education;
 	private String experience;
-	private String action;
 	public String getName() {
 		return name;
 	}
@@ -37,10 +36,5 @@ public class UserInputFilter {
 	public void setExperience(String experience) {
 		this.experience = experience;
 	}
-	public String getAction() {
-		return action;
-	}
-	public void setAction(String action) {
-		this.action = action;
-	}
+	
 }
