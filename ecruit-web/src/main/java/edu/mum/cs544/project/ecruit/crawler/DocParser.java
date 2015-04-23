@@ -1,4 +1,4 @@
-package edu.mum.cs544.project.ecruit.convertTotxt.core;
+package edu.mum.cs544.project.ecruit.crawler;
 
 import java.util.ArrayList;
 import java.util.List;

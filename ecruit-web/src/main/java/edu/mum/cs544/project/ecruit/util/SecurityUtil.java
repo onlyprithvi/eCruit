@@ -7,9 +7,13 @@ import edu.mum.cs544.project.ecruit.domain.User;
 public class SecurityUtil {
 
 	public static User getSessionUser() {
-		User user = (User) SecurityContextHolder.getContext()
+		User user;
+		try{
+		user = (User) SecurityContextHolder.getContext()
 				.getAuthentication().getPrincipal();
-
+		}catch(Exception ex){
+			user=null;
+		}
 		return user;
 	}
 

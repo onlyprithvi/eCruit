@@ -20,15 +20,14 @@
 		<intercept-url pattern="/check-availability/username/*"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/register" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/dashboard" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/register" access="IS_AUTHENTICATED_ANONYMOUSLY" />		
 		<intercept-url pattern="/error-login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/a/**" access="ROLE_ADMIN" />
 		<intercept-url pattern="/u/**" access="ROLE_ADMIN,ROLE_USER" />
 		
 		<form-login login-page="/login" authentication-failure-url="/error-login"
-			default-target-url="/dashboard" />
-		<logout logout-success-url="/" />
+			default-target-url="/dashboard" always-use-default-target="true"/>
+		<logout invalidate-session="true" logout-success-url="/" delete-cookies="JSESSIONID" />
 	</http>
 
 	<authentication-manager>

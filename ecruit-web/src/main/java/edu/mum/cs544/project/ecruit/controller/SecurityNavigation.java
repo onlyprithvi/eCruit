@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.mum.cs544.project.ecruit.domain.Role;
 import edu.mum.cs544.project.ecruit.domain.User;
 import edu.mum.cs544.project.ecruit.service.UserService;
+import edu.mum.cs544.project.ecruit.util.SecurityUtil;
 import edu.mum.cs544.project.ecruit.validator.ConfirmPasswordValidator;
 import edu.mum.cs544.project.ecruit.validator.UniqueUserNameAndPasswordValidator;
 
@@ -70,21 +71,28 @@ public class SecurityNavigation {
 	}
 
 	@RequestMapping(value = "/dashboard")
-	public ModelAndView showDashboard() {
-		ModelAndView modelAndView = new ModelAndView("layouts/main");
-		modelAndView.addObject("partials", "user/dashboard");
-		User user = (User) SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-		modelAndView.addObject("authenitcatedUser", user);
+	public ModelAndView showDashboard(HttpServletRequest request) {
+		ModelAndView modelAndView ;
+		User user = (User) SecurityUtil.getSessionUser();		
+		if (user != null) {
+			/*user = (User) SecurityContextHolder.getContext()
+					.getAuthentication().getPrincipal();*/
+			modelAndView = new ModelAndView("layouts/main");
+			modelAndView.addObject("partials", "user/dashboard");			
+			modelAndView.addObject("authenitcatedUser", user);
+		} else {
+			modelAndView = new ModelAndView("login");
+			
+		}
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerPage(Model model) {
 		model.addAttribute("user", new User());
 		return "register";
 	}
-	
+
 	@RequestMapping("/register-success")
 	public String registerSuccessPage() {
 		return "register-success";
@@ -96,7 +104,7 @@ public class SecurityNavigation {
 
 		confirmPasswordValidator.validate(newUser, result);
 		uniqueUserNameAndPasswordValidator.validate(newUser, result);
-		
+
 		if (result.hasErrors()) {
 			return "register";
 		}
@@ -110,17 +118,16 @@ public class SecurityNavigation {
 			return "register-form";
 		}
 	}
-	
+
 	@RequestMapping("/check-availability/username/{username}")
 	public String check(@PathVariable("username") String username, Model model) {
 		User user = userService.findUserByLoginId(username);
-	    if(user == null)
-	    	model.addAttribute("error", false);
-	    else
-	    	model.addAttribute("error", true);
-	    
-	    return "validate_username";
-	}
+		if (user == null)
+			model.addAttribute("error", false);
+		else
+			model.addAttribute("error", true);
 
+		return "validate_username";
+	}
 
 }

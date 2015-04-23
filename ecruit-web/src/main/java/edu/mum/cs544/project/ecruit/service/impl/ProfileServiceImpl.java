@@ -39,12 +39,11 @@ public class ProfileServiceImpl implements ProfileService {
 		return profileRepository.findProfileByURL(url);
 	}
 
-	@Override
+	
 	public Long getMaxPage(int pageSize) {
 		return (long) Math.ceil(profileRepository.getMaxrecords()/pageSize);
 	}
 
-	@Override
 	public List<Profile> getAllProfiles() {
 		return profileRepository.getAllProfiles();
 	}
