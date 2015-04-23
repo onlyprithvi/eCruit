@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +33,14 @@ public class CrawlerController {
 		crawlerService.executeCrawl();
 		redirectAttr.addFlashAttribute("message",
 				"Crawling has been started in backend.....");
+		return "redirect:/a/crawl";
+	}
+	
+	@RequestMapping(value = "/crawl/stop", method = RequestMethod.GET)
+	public String stopCrawl(RedirectAttributes redirectAttr) throws IOException {
+		crawlerService.stopCrawler();
+		redirectAttr.addFlashAttribute("message",
+				"Crawling has been stop.....");
 		return "redirect:/a/crawl";
 	}
 

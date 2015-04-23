@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -77,6 +78,13 @@ public class CrawlerService {
 				}
 			}
 		}
+	}
+	
+	
+	
+	public void stopCrawler(){
+		 pool.shutdownNow(); // Disable new tasks from being submitted
+		   
 	}
 
 	public void setUrl(String crawlerURL) {
