@@ -59,7 +59,6 @@ public class CrawlerService {
 					DocParser.getIndustry(), DocParser.getSkillSet(),
 					DocParser.getEducation(), DocParser.getExperience());
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
 		Elements questions = doc.select("a[href]");

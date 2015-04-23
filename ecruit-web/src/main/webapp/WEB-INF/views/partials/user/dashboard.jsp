@@ -5,3 +5,5 @@
 	${authenitcatedUser}
 </h3>
 <br>
+<c:set var="base" value="${pageContext.servletContext.contextPath}" />
+<img src="${base}/resource/images/pie.jpg" style="height: 300px;"/>
