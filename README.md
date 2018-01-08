@@ -1,3 +1,3 @@
 # eCruit
 
-Just a ccollege project
+Just a college project
